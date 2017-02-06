@@ -7,8 +7,8 @@
     <ProjectGuid>{AC8CD576-B4F1-403C-AC21-467DB89AA0C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Common.BizTalk.PipelineComponents.ContextAdder</RootNamespace>
-    <AssemblyName>Common.BizTalk.PipelineComponents.ContextAdder_v2.0</AssemblyName>
+    <RootNamespace>BizTalk.PipelineComponents</RootNamespace>
+    <AssemblyName>BizTalk.PipelineComponents.PromoteContext</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

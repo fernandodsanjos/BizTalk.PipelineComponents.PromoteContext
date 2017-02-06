@@ -14,7 +14,7 @@ using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel.Design;
 
-namespace Common.BizTalk.PipelineComponents
+namespace BizTalk.PipelineComponents
 {
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown), Guid("8fc58bc6-e6af-401d-901d-2d6d963c0d87"), CLSCompliant(false)]
     internal interface IBizTalkBuildSnapShot

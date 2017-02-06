@@ -17,7 +17,7 @@ using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel.Design;
 
-namespace Common.BizTalk.PipelineComponents.ContextAdder
+namespace BizTalk.PipelineComponents
 {
 
     [ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
