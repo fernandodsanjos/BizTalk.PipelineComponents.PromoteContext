@@ -40,9 +40,6 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.BizTalk.PipelineComponents.ContextAdderHelper_v1.0">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Pipeline Components\Common.BizTalk.PipelineComponents.ContextAdderHelper_v1.0.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.BizTalk.GlobalPropertySchemas, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Microsoft.BizTalk.GlobalPropertySchemas.dll</HintPath>
@@ -67,7 +64,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BizTalk.PipelineComponents.PromoteContext.nuspec" />
+    <None Include="BizTalk.PipelineComponents.PromoteContext.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="key.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

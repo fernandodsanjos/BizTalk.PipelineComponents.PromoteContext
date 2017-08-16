@@ -105,7 +105,7 @@ namespace BizTalk.PipelineComponents
             while (e.MoveNext())
             {
                 ContextValue v = (ContextValue)e.Current;
-                    pInMsg.Context.Write(v.Key, v.Namespace, v.Value);
+                    pInMsg.Context.Promote(v.Key, v.Namespace, v.Value);
 
             }
             return pInMsg;
