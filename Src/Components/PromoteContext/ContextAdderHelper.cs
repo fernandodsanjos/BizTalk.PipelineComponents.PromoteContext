@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Resources;
 using System.Reflection;
@@ -112,7 +113,7 @@ namespace BizTalk.PipelineComponents
                 if (namespaces.TryGetValue(context.Namespace, out ns) == false)
                     ns = context.Namespace;
 
-                builder.AppendFormat("{0}#{1}={2};", ns, context.Key, context.Value);
+                builder.AppendFormat("{0}#{1}@{3}={2};", ns, context.Key, context.Value, (int)context.Code);
             }
             
             return builder.ToString();
@@ -131,10 +132,38 @@ namespace BizTalk.PipelineComponents
                 
                 string[] context = coll.Split(new char[] {'#','='}, StringSplitOptions.RemoveEmptyEntries);
 
+                
                 if (namespaces.TryGetValue(context[0], out ns) == false)
                     ns = context[0];
 
-                this.InnerList.Add(new ContextValue { Key = context[1], Namespace = ns, Value = context[2] });
+                
+                TypeCode type = TypeCode.String;
+                string property = context[1];
+
+                Match match = Regex.Match(property, @"@(\d)$");
+                if (match.Success == true)
+                {
+                    /*
+                    Byte 6
+                    DateTime 16
+                    Decimal 15
+                    Double 14
+                    Int16 7
+                    Int32 9
+                    sbyte 5
+                    Single 13
+                    String 18
+                    UInt16 8
+                    UInt32 10
+                    */
+
+
+                    type = (TypeCode)Enum.Parse(typeof(TypeCode), match.Groups[1].Value);
+                    property = property.Substring(0, property.Length - match.Value.Length);
+                }
+
+
+                this.InnerList.Add(new ContextValue { Key = property, Namespace = ns, Value = context[2],Code = type });
 	        }
             
         }
@@ -144,6 +173,12 @@ namespace BizTalk.PipelineComponents
     public class ContextValue
     {
         internal event IsDirty Dirty;
+
+        string _Namespace;
+        string _Value;
+        string _Key;
+        TypeCode type = TypeCode.String;
+
         void LocalDirty()
         {
             if (Dirty != null)
@@ -178,10 +213,18 @@ namespace BizTalk.PipelineComponents
             }
         }
 
+        public TypeCode Code
+        {
+            get { return type; }
+            set
+            {
+                LocalDirty();
+                type = value;
+            }
+        }
+
         
-        string _Namespace;
-        string _Value;
-        string _Key;
+        
   
     }
 }
