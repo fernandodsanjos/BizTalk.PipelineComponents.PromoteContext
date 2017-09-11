@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BizTalk.PipelineComponents.PromoteContext</id>
+    <version>1.0.1.0</version>
+    <authors>Fernando Pires</authors>
+    <description>BizTalk.PipelineComponents.PromoteContext</description>
+  </metadata>
+  <files>
+    <file src="bin\Debug\BizTalk.PipelineComponents.PromoteContext.dll" target="lib\net45" />
+  </files>
+</package>

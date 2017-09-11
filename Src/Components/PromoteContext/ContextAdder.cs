@@ -108,7 +108,9 @@ namespace BizTalk.PipelineComponents
             {
                 ContextValue v = (ContextValue)e.Current;
 
-                var value = Convert.ChangeType(v.Value, v.Code);
+                //2017-09-09 Added possibility to use expression instead of a static value
+                object obj = ScriptExpressionHelper.Expression(v.Value);
+                var value = Convert.ChangeType(obj, v.Code);
 
                 pInMsg.Context.Promote(v.Key, v.Namespace, value);
 

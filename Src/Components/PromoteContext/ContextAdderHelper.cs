@@ -155,6 +155,7 @@ namespace BizTalk.PipelineComponents
                     String 18
                     UInt16 8
                     UInt32 10
+                    bool 3
                     */
 
 
