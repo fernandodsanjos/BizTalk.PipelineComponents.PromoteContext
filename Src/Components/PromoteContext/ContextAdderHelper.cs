@@ -177,8 +177,13 @@ namespace BizTalk.PipelineComponents
 
         string _Namespace;
         string _Value;
-        string _Key;
+        string _Key = String.Empty;
         TypeCode type = TypeCode.String;
+
+        public override string ToString()
+        {
+            return _Key.Length > 0 ? _Key : "Context value";
+        }
 
         void LocalDirty()
         {
