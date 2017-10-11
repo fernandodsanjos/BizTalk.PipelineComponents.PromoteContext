@@ -48,6 +48,8 @@ namespace BizTalk.PipelineComponents
             Properties = properties;
         }
 
+        [System.ComponentModel.Browsable(true)]
+        [System.ComponentModel.Editor(typeof(ContextValueCollectionEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public ContextValueCollection Properties
         {
             get
@@ -70,7 +72,7 @@ namespace BizTalk.PipelineComponents
         #endregion
 
         #region IBaseComponent Members
-
+        [System.ComponentModel.Browsable(false)]
         public string Description
         {
             get
@@ -78,7 +80,7 @@ namespace BizTalk.PipelineComponents
                 return "Context Adder";
             }
         }
-
+        [System.ComponentModel.Browsable(false)]
         public string Name
         {
             get
@@ -86,7 +88,7 @@ namespace BizTalk.PipelineComponents
                 return "ContextAdder";
             }
         }
-
+        [System.ComponentModel.Browsable(false)]
         public string Version
         {
             get
@@ -126,7 +128,7 @@ namespace BizTalk.PipelineComponents
         {
             return null;
         }
-
+        [System.ComponentModel.Browsable(false)]
         public System.IntPtr Icon
         {
             get
