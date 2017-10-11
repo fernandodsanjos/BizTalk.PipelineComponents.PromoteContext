@@ -71,7 +71,7 @@ namespace BizTalk.PipelineComponents
     {
 
         private Dictionary<string, string> namespaces = new Dictionary<string, string>();
-        string ns = String.Empty;
+       
 
         public  ContextValueCollection()
         {
@@ -107,7 +107,8 @@ namespace BizTalk.PipelineComponents
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
-            
+            string ns = String.Empty;
+
             foreach (ContextValue context in this)
             {
                 if (namespaces.TryGetValue(context.Namespace, out ns) == false)
@@ -125,7 +126,7 @@ namespace BizTalk.PipelineComponents
             string[] arrCollection = stringCollection.Split(new char[] {';'}, StringSplitOptions.RemoveEmptyEntries);
 
             this.InnerList.Clear();
-            
+            string ns = String.Empty;
 
             foreach (string coll in arrCollection)
 	        {
@@ -140,7 +141,9 @@ namespace BizTalk.PipelineComponents
                 TypeCode type = TypeCode.String;
                 string property = context[1];
 
-                Match match = Regex.Match(property, @"@(\d)$");
+                //2017-10-07 BUG found and fixed, pattern did only pick first number
+                Match match = Regex.Match(property, @"@(\d*)$");
+
                 if (match.Success == true)
                 {
                     /*
