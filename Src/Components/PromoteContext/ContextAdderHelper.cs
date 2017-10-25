@@ -114,7 +114,7 @@ namespace BizTalk.PipelineComponents
                 if (namespaces.TryGetValue(context.Namespace, out ns) == false)
                     ns = context.Namespace;
 
-                builder.AppendFormat("{0}#{1}@{3}={2};", ns, context.Key, context.Value, (int)context.Code);
+                builder.AppendFormat("{0}#{1}@{3}={2};", ns, context.Key, Utils.EncodeSpecialCharacters(context.Value), (int)context.Code);
             }
             
             return builder.ToString();
@@ -167,7 +167,7 @@ namespace BizTalk.PipelineComponents
                 }
 
 
-                this.InnerList.Add(new ContextValue { Key = property, Namespace = ns, Value = context[2],Code = type });
+                this.InnerList.Add(new ContextValue { Key = property, Namespace = ns, Value = Utils.DecodeSpecialCharacters(context[2]),Code = type });
 	        }
             
         }
